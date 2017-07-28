@@ -23,7 +23,7 @@
 ### 兴趣阅读
 - [想知道比特币（和其他加密货币）的原理吗?(ps:区块链)](https://www.bilibili.com/video/av12465079/)讲解比特币的原理，区块链的运行方式
 - [如何选择开源许可证？](http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html)：关于Reactjs许可争议，我们需要了解的开源许可
-- [我们用 JavaScript Hack 了家里的咖啡机](http://web.jobbole.com/91864/)
+- [我们用 JavaScript Hack 了家里的咖啡机](http://web.jobbole.com/91864/)：用 JavaScript 构建一个网络驱动的咖啡机
 
 ## 技术相关
 - [Introducing npx: an npm package runner](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)npx is a tool intended to help round out the experience of using packages from the npm registry 
