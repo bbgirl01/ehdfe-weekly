@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -13,7 +14,10 @@ module.exports = {
 
         filename: "[name].[hash:6].js",
     },
-
+    externals:{
+        'react':'React',
+        'react-dom':'ReactDOM'
+    },
     module: {
         rules: [{
                 test: /\.jsx?$/,
@@ -47,16 +51,10 @@ module.exports = {
         },
 
     },
-    devServer: {
-        // contentBase:__dirname, 
-        compress: true,
-        port: 8080,
-        historyApiFallback: true,
-        hot: true
-    },
-
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        new CleanWebpackPlugin([
+            path.resolve(__dirname,'../docs/')
+        ]),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'index.html'),
             filename: 'index.html'

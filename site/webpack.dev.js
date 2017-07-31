@@ -13,7 +13,10 @@ module.exports = {
 
         filename: "[name].[hash:6].js",
     },
-
+    externals:{
+        'react':'React',
+        'react-dom':'ReactDOM'
+    },
     module: {
         rules: [{
                 test: /\.jsx?$/,
