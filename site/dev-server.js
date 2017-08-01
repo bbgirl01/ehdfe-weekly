@@ -4,8 +4,13 @@ const WebpackDevServer = require('webpack-dev-server');
 const path = require('path');
 const chalk = require('chalk');
 
-configs.entry.app.unshift("webpack/hot/dev-server");
-configs.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/");
+// configs.entry.app.unshift("webpack/hot/dev-server");
+configs.entry.app.unshift(
+  "react-hot-loader/patch",
+  "webpack-dev-server/client?http://localhost:8080/",
+  "webpack/hot/dev-server"
+);
+
 
 const compiler = webpack(configs);
 const server = new WebpackDevServer(compiler,{

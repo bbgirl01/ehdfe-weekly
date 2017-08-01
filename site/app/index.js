@@ -1,8 +1,11 @@
 import React from 'react';
 
+import Navs from './navs'
+
+
 class App extends React.Component {
   render() {
-    return <h1>Hello,Good boy</h1>;
+    return <Navs/>;
   }
 }
 

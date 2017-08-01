@@ -1,23 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-const marked = require("marked");
-const renderer = new marked.Renderer();
 
 module.exports = {
-    entry:
-        // {
-        // app: [
-        [
-            'react-hot-loader/patch',
-            'webpack-dev-server/client?http://localhost:8080',
-            'webpack/hot/only-dev-server',
-            path.resolve(__dirname, './index.js'),
-        ],
-    // ]
-    // },
+    entry: {
+        app: [
+            path.resolve(__dirname, './site/index.js'),
+        ]
+    },
     output: {
-        path: path.resolve(__dirname, "../docs"),
+        path: path.resolve(__dirname, "./docs"),
 
         filename: "[name].[hash:6].js",
     },
@@ -29,20 +21,17 @@ module.exports = {
         rules: [{
                 test: /\.jsx?$/,
                 include: [
-                    path.resolve(__dirname, "../site")
+                    path.resolve(__dirname, "./site")
                 ],
                 use: [
-                    'react-hot-loader/webpack',
+                    'react-hot-loader',
                     {
                         loader: "babel-loader",
                         options: {
                             presets: ["env", 'stage-0', 'react'],
-                            "plugins": [
-                                "syntax-dynamic-import", ["import", {
-                                    libraryName: "antd",
-                                    style: true
-                                }]
-                            ]
+                              "plugins": [
+                                    ["import", { libraryName: "antd", style: true }]
+                                ]
                         }
                     }
                 ]
@@ -89,28 +78,14 @@ module.exports = {
 
                 ]
 
-            },
-            {
-                test: /\.md$/,
-                use: [{
-                        loader: "html-loader"
-                    },
-                    {
-                        loader: "markdown-loader",
-                        options: {
-                            pedantic: true,
-                            renderer
-                        }
-                    }
-                ]
-
             }
+
         ],
     },
 
     resolve: {
         alias: {
-            App: path.resolve(__dirname, './app')
+            App: path.resolve(__dirname, './site/app')
         },
 
     },
@@ -118,14 +93,14 @@ module.exports = {
         // contentBase:__dirname, 
         compress: true,
         port: 8080,
-        historyApiFallback:true,
+        historyApiFallback: true,
         hot: true
     },
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'index.html'),
+            template: path.resolve(__dirname, './site/index.html'),
             filename: 'index.html'
         })
     ],

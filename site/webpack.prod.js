@@ -14,9 +14,9 @@ module.exports = {
 
         filename: "[name].[hash:6].js",
     },
-    externals:{
-        'react':'React',
-        'react-dom':'ReactDOM'
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM'
     },
     module: {
         rules: [{
@@ -27,12 +27,35 @@ module.exports = {
                 use: [
                     'react-hot-loader',
                     {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ["env", 'stage-0', 'react']
+                        loader: "babel-loader",
+                        options: {
+                            presets: ["env", 'stage-0', 'react']
+                        }
                     }
-                }
-            ]
+                ]
+            },
+            {
+                test: /\.less$/,
+                use: [{
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: function () {
+                                return [
+                                    require('autoprefixer')
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        loader: 'less-loader'
+                    }
+                ]
             },
             {
                 test: /\.(html)$/,
@@ -41,6 +64,19 @@ module.exports = {
                     loader: "html-loader",
                 }]
             },
+            {
+                test: /\.(jpg|png|jpeg)$/,
+                use: [{
+                        loader: 'url-loader',
+                        query: {
+                            name: 'assets/[name]-[hash:5].[ext]',
+                            limit: 60000
+                        }
+                    }
+
+                ]
+
+            }
 
         ],
     },
@@ -53,7 +89,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin([
-            path.resolve(__dirname,'../docs/')
+            path.resolve(__dirname, '../docs/')
         ]),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'index.html'),
