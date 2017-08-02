@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "../docs"),
-
+    publicPath:'/ehdfe-weekly/',
     filename: "[name].[hash:6].js",
   },
   externals: {
