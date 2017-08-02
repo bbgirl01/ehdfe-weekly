@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const marked = require("marked");
 const renderer = new marked.Renderer();
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 
 module.exports = {
   entry: {
@@ -118,15 +120,24 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.html'),
-      filename: 'index.html'
+      filename: 'index.html',
+      minify:{
+        collapseWhitespace:true,
+      }
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.html'),
-      filename: '404.html'
+      filename: '404.html',
+      minify:{
+        collapseWhitespace:true,
+      }
     }),
-      new webpack.DefinePlugin({
+    new webpack.DefinePlugin({
         BASEPATH: JSON.stringify('/ehdfe-weekly'),
-      }),
+    }),
+    new UglifyJSPlugin({
+
+    })
   ],
 
 }
