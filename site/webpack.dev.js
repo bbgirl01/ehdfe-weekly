@@ -3,7 +3,8 @@ const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const marked = require("marked");
 const renderer = new marked.Renderer();
-console.log(process.cwd(),'ddddddddddddddddddd')
+// const theme = require('../theme.js')();
+
 module.exports = {
     entry:
         // {
@@ -23,7 +24,8 @@ module.exports = {
     },
     externals: {
         'react': 'React',
-        'react-dom': 'ReactDOM'
+        'react-dom': 'ReactDOM',
+        'react-router-dom': 'ReactRouterDOM'
     },
     module: {
         rules: [{
@@ -66,7 +68,10 @@ module.exports = {
                         }
                     },
                     {
-                        loader: 'less-loader'
+                        loader: 'less-loader',
+                        options:{
+                        //    modifyVars:JSON.stringify(theme)
+                        }
                     }
                 ]
             },

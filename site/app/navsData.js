@@ -1,9 +1,5 @@
 import globData from './globData.json';
 
-
-globData.forEach(function (item) {
-    console.log(item)
-})
 const navsData = [];
 
 var icons = ['coffee','apple','android-o','chrome','github','disconnect','camera-o','laptop','hdd','code-o'];

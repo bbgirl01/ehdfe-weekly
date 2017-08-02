@@ -1,12 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-const render = (Component) => {
-    ReactDOM.render(
-      <AppContainer>
-        <Component/>
-      </AppContainer>
-   , document.getElementById('app'))
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./render.prod');
+} else {
+  module.exports = require('./render.dev');
 }
-
-export default render; 

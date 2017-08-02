@@ -18,6 +18,7 @@
   ],
   "author": "Jeff",
   "license": "ISC",
+  "theme":"./theme.js",
   "bugs": {
     "url": "https://github.com/EHDFE/ehdfe-weekly/issues"
   },

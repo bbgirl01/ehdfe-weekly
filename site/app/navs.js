@@ -18,7 +18,7 @@ class Navs extends React.Component {
                         navsData
                     }}/>
                     <Layout style={{
-                        marginLeft: 200
+                        marginLeft: 300
                     }}>
                         <Header
                             style={{
@@ -34,7 +34,6 @@ class Navs extends React.Component {
                                 style={{
                                 padding: 24,
                                 background: '#fff',
-                                textAlign: 'center'
                             }}>
                                 <Switch>
                                     {/* <Route path="/about" component={About}/>

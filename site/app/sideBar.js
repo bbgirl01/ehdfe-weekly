@@ -18,7 +18,7 @@ class SiderBar extends React.Component {
     render() {
         var navs = this.props.navs.navsData;
         return (
-            <Sider
+            <Sider width="300"
                 style={{
                 overflow: 'auto',
                 height: '100vh',

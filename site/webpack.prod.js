@@ -6,6 +6,7 @@ const marked = require("marked");
 const renderer = new marked.Renderer();
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
+process.env.NODE_ENV = 'production';
 
 module.exports = {
   entry: {
@@ -29,7 +30,6 @@ module.exports = {
           path.resolve(__dirname, "../site")
         ],
         use: [
-          //   'react-hot-loader',
           {
             loader: "babel-loader",
             options: {
@@ -119,7 +119,7 @@ module.exports = {
       root: process.cwd()
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.html'),
+      template: path.resolve(__dirname, 'index.build.html'),
       filename: 'index.html',
       minify:{
         collapseWhitespace:true,
