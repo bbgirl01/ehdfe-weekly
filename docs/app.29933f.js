@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "" + chunkId + "." + "797e60" + ".js";
+/******/ 		script.src = __webpack_require__.p + "" + chunkId + "." + "29933f" + ".js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -5996,6 +5996,9 @@ var Header = _layout2.default.Header,
     Content = _layout2.default.Content,
     Footer = _layout2.default.Footer;
 
+
+var basename = "/ehdfe-weekly";
+
 var Navs = function (_React$Component) {
     _inherits(Navs, _React$Component);
 
@@ -6008,10 +6011,9 @@ var Navs = function (_React$Component) {
     _createClass(Navs, [{
         key: 'render',
         value: function render() {
-            console.log(_navsData2.default, 89899898);
             return _react2.default.createElement(
                 _reactRouterDom.BrowserRouter,
-                null,
+                { basename: basename },
                 _react2.default.createElement(
                     _layout2.default,
                     null,

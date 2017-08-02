@@ -8,11 +8,11 @@ import {BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-rout
 import navsData from './navsData';
 import Article from './Article'
 
+const basename = BASEPATH;
 class Navs extends React.Component {
     render() {
-        console.log(navsData, 89899898)
         return (
-            <Router>
+            <Router basename={basename}>
                 <Layout>
                     <SiderBar navs={{
                         navsData

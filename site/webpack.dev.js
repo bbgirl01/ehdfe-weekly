@@ -135,7 +135,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'index.html'),
             filename: 'index.html'
-        })
+        }),
+        new webpack.DefinePlugin({
+        BASEPATH: JSON.stringify('/'),
+      }),
     ],
 
 }

@@ -123,7 +123,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.html'),
       filename: '404.html'
-    })
+    }),
+      new webpack.DefinePlugin({
+        BASEPATH: JSON.stringify('/ehdfe-weekly'),
+      }),
   ],
 
 }
