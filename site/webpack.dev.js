@@ -3,7 +3,7 @@ const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const marked = require("marked");
 const renderer = new marked.Renderer();
-
+console.log(process.cwd(),'ddddddddddddddddddd')
 module.exports = {
     entry:
         // {
@@ -18,8 +18,8 @@ module.exports = {
     // },
     output: {
         path: path.resolve(__dirname, "../docs"),
-
-        filename: "[name].[hash:6].js",
+        publicPath:'/',
+        filename: "[name].js",
     },
     externals: {
         'react': 'React',
@@ -37,7 +37,7 @@ module.exports = {
                         loader: "babel-loader",
                         options: {
                             presets: ["env", 'stage-0', 'react'],
-                            "plugins": [
+                            plugins: [
                                 "syntax-dynamic-import", ["import", {
                                     libraryName: "antd",
                                     style: true
@@ -115,11 +115,19 @@ module.exports = {
 
     },
     devServer: {
-        // contentBase:__dirname, 
-        compress: true,
         port: 8080,
-        historyApiFallback:true,
-        hot: true
+        historyApiFallback: {
+            rewrites: [
+                {
+                    from: /^\/article\/.*$/,
+                    to() {
+                         return  '/index.html';
+                    },
+                }
+            ],
+        },
+        hot: true,
+        publicPath: "http://localhost:8080/"
     },
 
     plugins: [

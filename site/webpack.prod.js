@@ -27,11 +27,17 @@ module.exports = {
           path.resolve(__dirname, "../site")
         ],
         use: [
-        //   'react-hot-loader',
+          //   'react-hot-loader',
           {
             loader: "babel-loader",
             options: {
-              presets: ["env", 'stage-0', 'react']
+              presets: ["env", 'stage-0', 'react'],
+              plugins: [
+                "syntax-dynamic-import", ["import", {
+                  libraryName: "antd",
+                  style: true
+                }]
+              ]
             }
           }
         ]
@@ -107,8 +113,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin([
       path.resolve(__dirname, '../docs/')
-    ],{
-       root:process.cwd()
+    ], {
+      root: process.cwd()
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.html'),
