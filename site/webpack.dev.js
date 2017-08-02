@@ -3,7 +3,11 @@ const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const marked = require("marked");
 const renderer = new marked.Renderer();
-// const theme = require('../theme.js')();
+
+const fs  = require('fs');
+
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, '../theme.less'), 'utf8'));
 
 module.exports = {
     entry:
@@ -70,7 +74,7 @@ module.exports = {
                     {
                         loader: 'less-loader',
                         options:{
-                        //    modifyVars:JSON.stringify(theme)
+                            modifyVars: themeVariables
                         }
                     }
                 ]

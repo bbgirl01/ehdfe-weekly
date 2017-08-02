@@ -7,6 +7,10 @@ const renderer = new marked.Renderer();
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 process.env.NODE_ENV = 'production';
+const fs = require('fs');
+
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, '../theme.less'), 'utf8'));
 
 module.exports = {
   entry: {
@@ -16,7 +20,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "../docs"),
-    publicPath:'/ehdfe-weekly/',
+    publicPath: '/ehdfe-weekly/',
     filename: "[name].[hash:6].js",
   },
   externals: {
@@ -29,20 +33,18 @@ module.exports = {
         include: [
           path.resolve(__dirname, "../site")
         ],
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: ["env", 'stage-0', 'react'],
-              plugins: [
-                "syntax-dynamic-import", ["import", {
-                  libraryName: "antd",
-                  style: true
-                }]
-              ]
-            }
+        use: [{
+          loader: "babel-loader",
+          options: {
+            presets: ["env", 'stage-0', 'react'],
+            plugins: [
+              "syntax-dynamic-import", ["import", {
+                libraryName: "antd",
+                style: true
+              }]
+            ]
           }
-        ]
+        }]
       },
       {
         test: /\.less$/,
@@ -63,7 +65,10 @@ module.exports = {
             }
           },
           {
-            loader: 'less-loader'
+            loader: 'less-loader',
+            options: {
+              modifyVars: themeVariables
+            }
           }
         ]
       },
@@ -121,19 +126,19 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.build.html'),
       filename: 'index.html',
-      minify:{
-        collapseWhitespace:true,
+      minify: {
+        collapseWhitespace: true,
       }
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.html'),
       filename: '404.html',
-      minify:{
-        collapseWhitespace:true,
+      minify: {
+        collapseWhitespace: true,
       }
     }),
     new webpack.DefinePlugin({
-        BASEPATH: JSON.stringify('/ehdfe-weekly'),
+      BASEPATH: JSON.stringify('/ehdfe-weekly'),
     }),
     new UglifyJSPlugin({
 
