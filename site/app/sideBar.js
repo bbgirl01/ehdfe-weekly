@@ -1,5 +1,5 @@
 import React from 'react';
-
+import style from './sideBar.css';
 import {Layout, Menu, Icon} from 'antd';
 
 const {Sider} = Layout;
@@ -23,15 +23,18 @@ class SiderBar extends React.Component {
                 overflow: 'auto',
                 height: '100vh',
                 position: 'fixed',
-                background: '#fff',
+                background: '#333',
                 left: 0,
                 flex:"0 0 300px"
             }}>
-                <div className="logo"/>
-                <Menu mode="inline">
+                <div className={style.logo}>
+                    易周刊
+                </div>
+
+                <Menu mode="inline" defaultSelectedKeys={['1']} theme="dark"  style={{background:'#333'}}>
                     {navs.map((nav, key) => <Menu.Item key={key}>
                         <Icon type={nav.icon}/>
-                        <span className="nav-text"><Link to={nav.url}>{nav.name}</Link></span>
+                        <span className="nav-text"><Link style={{color:'#fff'}} to={nav.url}>{nav.name}</Link></span>
                     </Menu.Item>)
                     }
                 </Menu>

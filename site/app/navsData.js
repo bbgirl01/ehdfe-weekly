@@ -9,8 +9,9 @@ globData.forEach(function (item) {
     var match = reg.exec(item);
     navsData.push({
         url: '/article/' + match[1],
-        name: item,
+        name: item.slice(0,(item.length-match[1].length-5)),
         icon: icons[parseInt((Math.random() * 10), 10)],
+        item:item
     })
 })
 export default navsData;

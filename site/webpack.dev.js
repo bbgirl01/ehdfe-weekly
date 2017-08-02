@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 const marked = require("marked");
 const renderer = new marked.Renderer();
 
-const fs  = require('fs');
+const fs = require('fs');
 
 const lessToJs = require('less-vars-to-js');
 const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, '../theme.less'), 'utf8'));
@@ -23,7 +23,7 @@ module.exports = {
     // },
     output: {
         path: path.resolve(__dirname, "../docs"),
-        publicPath:'/',
+        publicPath: '/',
         filename: "[name].js",
     },
     externals: {
@@ -54,12 +54,37 @@ module.exports = {
                 ]
             },
             {
+                test: /\.css$/,
+                use: [{
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            modules: true,
+                            localIdentName: '[path][name]__[local]--[hash:base64:5]'
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: function () {
+                                return [
+                                    require('autoprefixer')
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.less$/,
                 use: [{
                         loader: 'style-loader'
                     },
                     {
-                        loader: 'css-loader'
+                        loader: 'css-loader',
                     },
                     {
                         loader: 'postcss-loader',
@@ -73,7 +98,7 @@ module.exports = {
                     },
                     {
                         loader: 'less-loader',
-                        options:{
+                        options: {
                             modifyVars: themeVariables
                         }
                     }
@@ -126,14 +151,12 @@ module.exports = {
     devServer: {
         port: 8080,
         historyApiFallback: {
-            rewrites: [
-                {
-                    from: /^\/article\/.*$/,
-                    to() {
-                         return  '/index.html';
-                    },
-                }
-            ],
+            rewrites: [{
+                from: /^\/article\/.*$/,
+                to() {
+                    return '/index.html';
+                },
+            }],
         },
         hot: true,
         publicPath: "http://localhost:8080/"
@@ -146,8 +169,8 @@ module.exports = {
             filename: 'index.html'
         }),
         new webpack.DefinePlugin({
-        BASEPATH: JSON.stringify('/'),
-      }),
+            BASEPATH: JSON.stringify('/'),
+        }),
     ],
 
 }

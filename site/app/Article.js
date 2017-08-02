@@ -13,7 +13,7 @@ class Article extends React.Component {
         var _this = this;
         navsData.forEach(function(item){
             if(item.url===('/article/'+url)){
-                import('../../weekly/'+item.name).then(function(data){
+                import('../../weekly/'+item.item).then(function(data){
                     _this.setState({article:data})
                 })
 

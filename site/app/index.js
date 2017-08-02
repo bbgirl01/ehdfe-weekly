@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Navs from './navs'
+import Navs from './router'
 
 
 class App extends React.Component {
