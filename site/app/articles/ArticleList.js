@@ -11,7 +11,6 @@ class ArticleList extends React.Component {
         super(props);
     }
     render() {
-        console.log(this.props,'articles,888888888')
         return (
             <Layout>
                 <SiderBar navs={{

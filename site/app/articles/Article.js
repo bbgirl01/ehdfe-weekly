@@ -1,5 +1,6 @@
 import React from 'react';
 import navsData from './navsData';
+import  './Article.css';
 
 class Article extends React.Component {
     constructor(props) {
@@ -39,7 +40,7 @@ class Article extends React.Component {
     render() {
 
         return (
-           <div>
+           <div className="article-content" >
                <div dangerouslySetInnerHTML={{ __html:this.state.article }}></div>
            </div>
         );
