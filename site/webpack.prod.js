@@ -146,7 +146,8 @@ module.exports = {
     new CleanWebpackPlugin([
       path.resolve(__dirname, '../docs/')
     ], {
-      root: process.cwd()
+      root: process.cwd(),
+      exclude: [ 'favicon.ico']
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.build.html'),

@@ -12,13 +12,13 @@ class Article extends React.Component {
     dealData(url){
         var _this = this;
         if(!url){
-            import('../../weekly/'+navsData[0].item).then(function(data){
+            import('../../../weekly/'+navsData[0].item).then(function(data){
                 _this.setState({article:data})
             }) 
         }
         navsData.forEach(function(item){
             if(item.url===('/article/'+url)){
-                import('../../weekly/'+item.item).then(function(data){
+                import('../../../weekly/'+item.item).then(function(data){
                     _this.setState({article:data})
                 })
 
