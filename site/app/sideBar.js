@@ -31,7 +31,7 @@ class SiderBar extends React.Component {
                     易周刊
                 </div>
 
-                <Menu mode="inline" defaultSelectedKeys={['1']} theme="dark"  style={{background:'#333'}}>
+                <Menu mode="inline" defaultSelectedKeys={['0']} theme="dark"  style={{background:'#333'}}>
                     {navs.map((nav, key) => <Menu.Item key={key}>
                         <Icon type={nav.icon}/>
                         <span className="nav-text"><Link style={{color:'#fff'}} to={nav.url}>{nav.name}</Link></span>

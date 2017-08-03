@@ -36,9 +36,8 @@ class Navs extends React.Component {
                                 background: '#fff',
                             }}>
                                 <Switch>
-                                    {/* <Route path="/about" component={About}/>
-                                    <Route path="/" component={Company}/> */}
                                     <Route path="/article/:url" component={Article}/>
+                                    <Route path="/" component={Article}/>                                     
                                 </Switch>
                             </div>
                         </Content>
