@@ -3,7 +3,7 @@ const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const marked = require("marked");
 const renderer = new marked.Renderer();
-
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const fs = require('fs');
 
 const lessToJs = require('less-vars-to-js');
@@ -171,6 +171,22 @@ module.exports = {
         new webpack.DefinePlugin({
             BASEPATH: JSON.stringify('/'),
         }),
+        new FaviconsWebpackPlugin({
+            logo: './assets/favicon.ico',
+            inject: true,
+            icons: {
+                android: false,
+                appleIcon: false,
+                appleStartup: false,
+                coast: false,
+                favicons: true,
+                firefox: true,
+                opengraph: false,
+                twitter: false,
+                yandex: false,
+                windows: false
+            }
+        })
     ],
 
 }

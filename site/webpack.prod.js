@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const marked = require("marked");
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const renderer = new marked.Renderer();
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
@@ -147,7 +148,7 @@ module.exports = {
       path.resolve(__dirname, '../docs/')
     ], {
       root: process.cwd(),
-      exclude: [ 'favicon.ico']
+      exclude: ['favicon.ico']
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.build.html'),
@@ -168,6 +169,22 @@ module.exports = {
     }),
     new UglifyJSPlugin({
 
+    }),
+    new FaviconsWebpackPlugin({
+      logo: './assets/favicon.ico',
+      inject: true,
+      icons: {
+        android: false,
+        appleIcon: false,
+        appleStartup: false,
+        coast: false,
+        favicons: true,
+        firefox: true,
+        opengraph: false,
+        twitter: false,
+        yandex: false,
+        windows: false
+      }
     })
   ],
 
