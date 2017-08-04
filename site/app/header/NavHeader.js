@@ -17,7 +17,8 @@ class NavHeader extends React.Component {
                 style={{
                 position: 'fixed',
                 width: '100%',
-                background:'#333'
+                background:'#333',
+                zIndex:2
             }}>
                   <div className={style.logo}>
                     易周刊
