@@ -4,7 +4,7 @@ import {Layout, Menu, Icon} from 'antd';
 import Article from './Article'
 const {Header, Content, Footer, Sider} = Layout;
 import {BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom';
-import './sideBar.css';
+import style from './sideBar.css';
 import navsData from './navsData';
 
 class ArticleList extends React.Component {
@@ -53,10 +53,11 @@ class ArticleList extends React.Component {
                     overflow: 'auto',
                     height: '100vh',
                     position: 'fixed',
-                    left: 0
+                    left: 0,
+                    zIndex: 9999
                 }}
-                  width="300"  
-                >
+                    width="300">
+
                     <Menu
                         mode="inline"
                         defaultSelectedKeys={this.state.defaultSelectedKeys}
@@ -73,9 +74,24 @@ class ArticleList extends React.Component {
                         </Menu.Item>)
 }
                     </Menu>
+                    <div style={{textAlign:'center',marginTop:'20px'}}>
+                        <Icon
+                        className={style.trigger}
+                        style={{
+                            color:'#fff'
+                        }}
+                        type={this.state.collapsed
+                        ? 'menu-unfold'
+                        : 'menu-fold'}
+                        onClick={this.toggle}/>
+                    </div>
+
                 </Sider>
-                <Layout style={{
-                    marginLeft:this.state.collapsed?'64px':'300px'
+                <Layout
+                    style={{
+                    marginLeft: this.state.collapsed
+                        ? '64px'
+                        : '300px'
                 }}>
                     <Content
                         style={{
@@ -89,7 +105,7 @@ class ArticleList extends React.Component {
                             background: '#fff'
                         }}>
                             <Icon
-                                className="trigger"
+                                className={style.trigger}
                                 type={this.state.collapsed
                                 ? 'menu-unfold'
                                 : 'menu-fold'}
