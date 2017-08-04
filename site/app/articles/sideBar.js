@@ -38,7 +38,8 @@ class SiderBar extends React.Component {
                 position: 'fixed',
                 background: '#333',
                 left: 0,
-                top: '64px'
+                top: '64px',
+                zIndex:2
             }}>
                 <Menu
                     mode="inline"

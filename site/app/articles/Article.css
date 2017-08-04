@@ -1,10 +1,14 @@
+:global(.article-content){
+    /* position: relative; */
+}
 :global(.article-content h1){
     margin-bottom:1em;
 }
 :global(.article-content blockquote){
     border-left: 0.25em solid #dfe2e5;
     background:#F6F6F6;
-     padding:0.25em 0; 
+    padding:0.25em 0; 
+    /* z-index:1; */
 }
 :global(.article-content h2){
     margin-top:1em;
