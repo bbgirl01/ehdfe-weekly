@@ -1,26 +1,30 @@
 import React from 'react';
 import navsData from './navsData';
 import  './Article.css';
+import { Spin} from 'antd';
+
 
 class Article extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            article:''
+            article:'',
+            loading:false
         }
     }
     
     dealData(url){
         var _this = this;
+        this.setState({loading:true})
         if(!url){
             import('../../../weekly/'+navsData[0].item).then(function(data){
-                _this.setState({article:data})
+                _this.setState({article:data,loading:false})
             }) 
         }
         navsData.forEach(function(item){
             if(item.url===('/article/'+url)){
                 import('../../../weekly/'+item.item).then(function(data){
-                    _this.setState({article:data})
+                    _this.setState({article:data,loading:false})
                 })
 
             }
@@ -41,7 +45,9 @@ class Article extends React.Component {
 
         return (
            <div className="article-content" >
+               <Spin size="large" spinning={this.state.loading} tip="加载中">
                <div dangerouslySetInnerHTML={{ __html:this.state.article }}></div>
+               </Spin>
            </div>
         );
     }
