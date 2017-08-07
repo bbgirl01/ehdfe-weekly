@@ -22,9 +22,7 @@ const styleSheet = createStyleSheet(theme => ({
         color: '#fff',
         '&:hover': {
             backgroundColor: '#1976d2'
-        },
-        marginBottom: '20px'
-
+        }
     },
     footer: {
         textAlign: 'center',

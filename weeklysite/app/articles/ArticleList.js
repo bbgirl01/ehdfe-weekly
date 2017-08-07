@@ -14,7 +14,7 @@ import navsData from './navsData';
 import Article from './Article'
 import {BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom';
 import styleSheet from './ArticleListStyle'
-
+import ListIcon from 'material-ui-icons/List';
 class ArticleList extends React.Component {
     state = {
         open: {
@@ -31,9 +31,9 @@ class ArticleList extends React.Component {
     handleLeftClose = () => this.toggleDrawer('left', false);
 
     render() {
- 
-        const classes = this.props.classes;
 
+        const classes = this.props.classes;
+        console.log(classes,888888888888)
         const sideList = (
             <div>
                 <List className={classes.list} disablePadding>
@@ -51,27 +51,33 @@ class ArticleList extends React.Component {
         );
 
         return (
-            <div style={{marginTop:'48px'}}>
-            <div className={classes.content}>
-                <div className={classes.article}>
-                    <Button raised className={classes.button}  onClick={this.handleLeftOpen} >展开列表</Button>
-                    <Switch>
-                        <Route path="/article/:url" component={Article}/>
-                        <Route path="/" component={Article}/>
-                    </Switch>
-                </div>
-                
-                <Drawer
-                    open={this.state.open.left}
-                    onRequestClose={this.handleLeftClose}
-                    onClick={this.handleLeftClose}>
-                    {sideList}
-                </Drawer>
+            <div style={{
+                marginTop: '48px'
+            }}>
+                <div className={classes.content}>
+                    <div className={classes.article}>
+                        <Button raised className={classes.button}  onClick={this.handleLeftOpen} >展开列表</Button>
+                        <Switch>
+                            <Route path="/article/:url" component={Article}/>
+                            <Route path="/" component={Article}/>
+                        </Switch>
+                    </div>
 
-            </div>
-            <div className={classes.footer}>
-                ©2017 Created by EHDFE
-            </div>
+                    <Drawer
+                        open={this.state.open.left}
+                        onRequestClose={this.handleLeftClose}
+                        onClick={this.handleLeftClose}>
+                        {sideList}
+                    </Drawer>
+
+                </div>
+
+                <div className={classes.footer}>
+                    ©2017 Created by EHDFE
+                </div>
+                <Button fab className={classes.button} style={{position:'fixed',right:'50px',bottom:'40px'}} onClick={this.handleLeftOpen}>
+                     <ListIcon />
+                 </Button>
             </div>
         )
     }
