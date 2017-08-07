@@ -6,13 +6,16 @@ import {BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-rout
 
 const basename = BASEPATH;
 class Navs extends React.Component {
+    state= {
+        a:3
+    }
     render() {
         return (
             <Router basename={basename}>
                 <div>
                     <NavHeader/>
                     <Switch>
-                        <Route path="/article" component={ArticleList}/>
+                         <Route path="/article" dd={this.state.a} component={ArticleList}/>
                          <Route path="/" component={ArticleList}/>  
                     </Switch>  
                 </div>

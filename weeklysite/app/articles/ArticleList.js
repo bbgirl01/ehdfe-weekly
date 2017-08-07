@@ -31,6 +31,7 @@ class ArticleList extends React.Component {
     handleLeftClose = () => this.toggleDrawer('left', false);
 
     render() {
+ 
         const classes = this.props.classes;
 
         const sideList = (

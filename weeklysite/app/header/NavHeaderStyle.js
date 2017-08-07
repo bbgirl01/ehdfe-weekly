@@ -23,6 +23,13 @@ const styleSheet = createStyleSheet(theme => ({
     backgroundImg:{
         verticalAlign:'middle',
         height:'50%'
+    },
+    morevert:{
+        alignSelf:'flex-end',
+        flexGrow:1,
+        textAlign:'center',
+        lineHeight:'41px',
+        color:'#fff'
     }
 }));
 

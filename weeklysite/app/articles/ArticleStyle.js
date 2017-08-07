@@ -6,7 +6,9 @@ const styleSheet = createStyleSheet(theme => ({
     position:'fixed',
     left:'50%',
     top:'50%',
-    color:'#2196F3'
+    color:'#2196F3',
+    marginLeft:'-25px',
+    marginTop:'-25px'
   },
 }));
 
