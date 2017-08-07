@@ -50,7 +50,7 @@ class ArticleList extends React.Component {
         );
 
         return (
-            <div>
+            <div style={{marginTop:'48px'}}>
             <div className={classes.content}>
                 <div className={classes.article}>
                     <Button raised className={classes.button}  onClick={this.handleLeftOpen} >展开列表</Button>

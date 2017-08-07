@@ -14,7 +14,8 @@ const styleSheet = createStyleSheet(theme => ({
         textAlign:'center',
         lineHeight:'48px',
         fontSize:'26px',
-        fontFamily: 'STKaiti'
+        fontFamily: 'STKaiti',
+        whiteSpace:'nowrap'
     },
     tab:{
         flexGrow:4

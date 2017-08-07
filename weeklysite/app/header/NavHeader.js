@@ -41,10 +41,8 @@ class NavHeader extends React.Component {
 
         return (
             <div className={classes.root}>
-                <AppBar position="static" className={classes.header}>
-
+                <AppBar position="fixed" className={classes.header}>
                     <div className={classes.logo}>
-                        <img src={require('../../assets/logo.png')} className={classes.backgroundImg}/>
                         易周刊
                     </div>
                     <Tabs index={this.state.index} onChange={this.handleChange} className={classes.tab}>

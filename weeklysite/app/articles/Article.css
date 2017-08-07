@@ -1,6 +1,4 @@
-.article-content{
-    /* position: relative; */
-}
+
 .article-content h1{
     margin-bottom:1em;
 }
@@ -8,6 +6,7 @@
     border-left: 0.25em solid #dfe2e5;
     background:#F6F6F6;
     padding:0.25em 0; 
+    margin: 20px;
     /* z-index:1; */
 }
 .article-content h2{
@@ -31,6 +30,7 @@
     margin-top: 10px;
     display: list-item;
     list-style-type: initial;
+    word-wrap: break-word;
 }
 .article-content table{
     width:100%;

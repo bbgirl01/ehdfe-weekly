@@ -2,6 +2,8 @@ import React from 'react';
 import navsData from './navsData';
 import styleSheet from './ArticleStyle';
 import {withStyles, createStyleSheet} from 'material-ui/styles';
+import { CircularProgress } from 'material-ui/Progress';
+
 import  './Article.css';
 
 
@@ -44,9 +46,10 @@ class Article extends React.Component {
         }
     }
     render() {
-
+        const {classes} = this.props;
         return (
-           <div className="article-content" >        
+           <div className="article-content" >   
+               {this.state.loading&&<CircularProgress className={classes.progress} size={50} />}     
                <div dangerouslySetInnerHTML={{ __html:this.state.article }}></div>
            </div>
         );
