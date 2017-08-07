@@ -6,7 +6,10 @@
   "scripts": {
     "start": "webpack-dev-server --config ./site/webpack.dev.js",
     "fetch": "node ./site/getArticleList.js",
-    "build": "webpack --config ./site/webpack.prod.js"
+    "build": "webpack --config ./site/webpack.prod.js",
+    "mstart": "webpack-dev-server --config ./weeklysite/webpack.dev.js",
+    "mfetch": "node ./weeklysite/getArticleList.js",
+    "mbuild": "webpack --config ./weeklysite/webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -52,10 +55,14 @@
   "dependencies": {
     "antd": "^2.12.3",
     "babel-plugin-import": "^1.3.1",
+    "material-ui": "^1.0.0-beta.4",
+    "material-ui-icons": "^1.0.0-alpha.19",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "^3.0.0-beta.7",
     "react-router": "^4.1.2",
-    "react-router-dom": "^4.1.2"
+    "react-router-dom": "^4.1.2",
+    "react-swipeable-views": "^0.12.5"
   }
 }

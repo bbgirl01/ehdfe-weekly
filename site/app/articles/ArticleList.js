@@ -16,7 +16,6 @@ class ArticleList extends React.Component {
         this.choose();
     }
     toggle = () => {
-        console.log(33333)
         this.setState({
             collapsed: !this.state.collapsed
         });

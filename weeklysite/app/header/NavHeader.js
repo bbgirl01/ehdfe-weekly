@@ -1,0 +1,61 @@
+import React from 'react';
+
+import {BrowserRouter as Router, Route, Link, Switch, Redirect,withRouter} from 'react-router-dom'
+import {withStyles, createStyleSheet} from 'material-ui/styles';
+import SwipeableViews from 'react-swipeable-views';
+import AppBar from 'material-ui/AppBar';
+import Tabs, {Tab} from 'material-ui/Tabs';
+import styleSheet from './NavHeaderStyle'
+
+
+const TabContainer = props => <div style={{
+    padding: 20
+}}>
+    {props.children}
+</div>;
+
+
+class NavHeader extends React.Component {
+    constructor(props){
+        super(props)
+       const {history } = this.props;
+        this.state = {
+            index: 0
+        };
+    }
+
+
+    handleChange = (event, index) => {
+
+        this.setState({index});
+        if(index===0){
+            // console.log(this.props.history,333)
+            this.props.history.push('/article');
+        }else if(index===1){
+           window.location='https://github.com/EHDFE';
+        }
+    };
+
+    render() {
+        const classes = this.props.classes;
+
+        return (
+            <div className={classes.root}>
+                <AppBar position="static" className={classes.header}>
+
+                    <div className={classes.logo}>
+                        <img src={require('../../assets/logo.png')} className={classes.backgroundImg}/>
+                        易周刊
+                    </div>
+                    <Tabs index={this.state.index} onChange={this.handleChange} className={classes.tab}>
+                        <Tab label="周刊 "><Link  to="/article">周刊</Link></Tab>
+                        <Tab label="联系我们"><a  href="https://github.com/EHDFE">联系我们</a></Tab>
+                    </Tabs>
+                </AppBar>
+            </div>
+        );
+    }
+
+}
+
+export default withRouter(withStyles(styleSheet)(NavHeader));
