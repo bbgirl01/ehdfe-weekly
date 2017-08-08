@@ -4,12 +4,12 @@
   "description": "ehdef weekly",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./site/webpack.dev.js",
-    "fetch": "node ./site/getArticleList.js",
-    "build": "webpack --config ./site/webpack.prod.js",
-    "mstart": "webpack-dev-server --config ./weeklysite/webpack.dev.js",
-    "mfetch": "node ./weeklysite/getArticleList.js",
-    "mbuild": "webpack --config ./weeklysite/webpack.prod.js"
+    "astart": "webpack-dev-server --config ./site/webpack.dev.js",
+    "afetch": "node ./site/getArticleList.js",
+    "abuild": "webpack --config ./site/webpack.prod.js",
+    "start": "webpack-dev-server --config ./weeklysite/webpack.dev.js",
+    "fetch": "node ./weeklysite/getArticleList.js",
+    "build": "webpack --config ./weeklysite/webpack.prod.js"
   },
   "repository": {
     "type": "git",
