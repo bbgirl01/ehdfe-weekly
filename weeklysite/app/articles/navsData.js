@@ -15,14 +15,14 @@ const navsData = [];
 
 var icons = [LanguageIcon,LightbulbOutlineIcon,StarIcon,PermDataSettingIcon,MailIcon,ComputerIcon,DirectionsBikeIcon,NearMeIcon,FlightIcon,LocalCafeIcon];
 
-globData.forEach(function (item) {
+globData.forEach(function (item,index) {
     var reg = /(\d+)\..+\((.+)\)\.md$/;
     var match = reg.exec(item);
     navsData.push({
         url: '/article/' + match[2],
         name: item.slice((match[1].length+1),(item.length-match[2].length-5)),
         icon: ()=>{
-            const Component = icons[parseInt((Math.random() * 10), 10)]; 
+            const Component = icons[(index%10)]; 
              return  <Component/>
             },
         item:item
