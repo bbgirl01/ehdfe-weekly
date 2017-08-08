@@ -34,7 +34,7 @@ class NavHeader extends React.Component {
             // console.log(this.props.history,333)
             this.props.history.push('/article');
         }else if(index===1){
-           window.location='https://github.com/EHDFE';
+           window.location='https://github.com/EHDFE/ehdfe-weekly';
         }
     };
 

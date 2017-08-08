@@ -3,24 +3,25 @@ import {withStyles, createStyleSheet} from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 import Button from 'material-ui/Button';
 import List, {ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText} from 'material-ui/List';
-import InboxIcon from 'material-ui-icons/Inbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import StarIcon from 'material-ui-icons/Star';
-import SendIcon from 'material-ui-icons/Send';
-import MailIcon from 'material-ui-icons/Mail';
-import DeleteIcon from 'material-ui-icons/Delete';
-import ReportIcon from 'material-ui-icons/Report';
+import Hidden from 'material-ui/Hidden';
+import withWidth from 'material-ui/utils/withWidth';
 import navsData from './navsData';
 import Article from './Article'
 import {BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom';
 import styleSheet from './ArticleListStyle'
 import ListIcon from 'material-ui-icons/List';
+import compose from 'recompose/compose';
+import Grid from 'material-ui/Grid';
+
 class ArticleList extends React.Component {
-    state = {
-        open: {
-            left: false
-        }
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            open: {
+                left: false
+            }
+        };
+    }
 
     toggleDrawer = (side, open) => {
         const drawerState = {};
@@ -31,9 +32,8 @@ class ArticleList extends React.Component {
     handleLeftClose = () => this.toggleDrawer('left', false);
 
     render() {
-
+        let width = this.props.width;
         const classes = this.props.classes;
-        console.log(classes,888888888888)
         const sideList = (
             <div>
                 <List className={classes.list} disablePadding>
@@ -54,33 +54,50 @@ class ArticleList extends React.Component {
             <div style={{
                 marginTop: '48px'
             }}>
-                <div className={classes.content}>
-                    <div className={classes.article}>
-                        <Button raised className={classes.button}  onClick={this.handleLeftOpen} >展开列表</Button>
-                        <Switch>
-                            <Route path="/article/:url" component={Article}/>
-                            <Route path="/" component={Article}/>
-                        </Switch>
+                <Hidden smDown>
+                <div className={classes.sideBar}>
+                    {sideList}
+                </div>
+                </Hidden>
+                <div style={{paddingLeft:((width==='lg'||width==='xl'||width==='md')?'250px':'0px')}}>
+                    <div className={classes.content}>
+                        <div className={classes.article}>
+                            <Hidden mdUp>
+                            <Button raised className={classes.button} onClick={this.handleLeftOpen}>展开列表</Button>
+                            </Hidden>
+                            <Switch>
+                                <Route path="/article/:url" component={Article}/>
+                                <Route path="/" component={Article}/>
+                            </Switch>
+                        </div>
                     </div>
-
-                    <Drawer
-                        open={this.state.open.left}
-                        onRequestClose={this.handleLeftClose}
-                        onClick={this.handleLeftClose}>
-                        {sideList}
-                    </Drawer>
-
+                    <div className={classes.footer}>
+                        ©2017 Created by EHDFE
+                    </div>
                 </div>
-
-                <div className={classes.footer}>
-                    ©2017 Created by EHDFE
-                </div>
-                <Button fab className={classes.button} style={{position:'fixed',right:'50px',bottom:'40px'}} onClick={this.handleLeftOpen}>
-                     <ListIcon />
-                 </Button>
+            
+                <Hidden mdUp>
+                    <Button
+                        fab
+                        className={classes.button}
+                        style={{
+                        position: 'fixed',
+                        right: '50px',
+                        bottom: '40px'
+                    }}
+                        onClick={this.handleLeftOpen}>
+                        <ListIcon/>
+                    </Button>
+                </Hidden>
+                <Drawer
+                    open={this.state.open.left}
+                    onRequestClose={this.handleLeftClose}
+                    onClick={this.handleLeftClose}>
+                    {sideList}
+                </Drawer>
             </div>
         )
     }
 }
 
-export default withStyles(styleSheet)(ArticleList);
+export default compose(withStyles(styleSheet), withWidth())(ArticleList);

@@ -24,6 +24,9 @@ const styleSheet = createStyleSheet(theme => ({
             backgroundColor: '#1976d2'
         }
     },
+    sideBar:{
+        position:'fixed'
+    },
     footer: {
         textAlign: 'center',
         padding: '24px 50px',
