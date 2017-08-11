@@ -1,4 +1,7 @@
 
+.article-content {
+    line-height: 1.5;
+}
 .article-content h1{
     margin-bottom:1em;
 }
@@ -31,6 +34,12 @@
     display: list-item;
     list-style-type: initial;
     word-wrap: break-word;
+}
+.article-content  p{
+   margin-bottom: 16px;
+}
+.article-content ul li>p{
+   margin-bottom: 16px;
 }
 .article-content table{
     width:100%;
