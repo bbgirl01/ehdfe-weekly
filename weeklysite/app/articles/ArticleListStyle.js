@@ -24,6 +24,10 @@ const styleSheet = createStyleSheet(theme => ({
             backgroundColor: '#1976d2'
         }
     },
+    sideButton:{
+        paddingLeft:'20px',
+        cursor:'pointer'
+    },
     sideBar:{
         position:'fixed'
     },

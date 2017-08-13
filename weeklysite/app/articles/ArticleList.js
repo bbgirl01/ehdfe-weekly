@@ -10,6 +10,8 @@ import Article from './Article'
 import {BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom';
 import styleSheet from './ArticleListStyle'
 import ListIcon from 'material-ui-icons/List';
+import FormatIndentDecreaseIcon from 'material-ui-icons/FormatIndentDecrease';
+import FormatIndentIncreaseIcon from 'material-ui-icons/FormatIndentIncrease';
 import compose from 'recompose/compose';
 import Grid from 'material-ui/Grid';
 
@@ -19,7 +21,8 @@ class ArticleList extends React.Component {
         this.state = {
             open: {
                 left: false
-            }
+            },
+            sidebar: true
         };
     }
 
@@ -30,10 +33,16 @@ class ArticleList extends React.Component {
     };
     handleLeftOpen = () => this.toggleDrawer('left', true);
     handleLeftClose = () => this.toggleDrawer('left', false);
+    handleSidebar = () => {
+        this.setState({
+            sidebar: !this.state.sidebar
+        })
+    }
 
     render() {
         let width = this.props.width;
         const classes = this.props.classes;
+        console.log(classes)
         const sideList = (
             <div>
                 <List className={classes.list} disablePadding>
@@ -54,16 +63,28 @@ class ArticleList extends React.Component {
             <div style={{
                 marginTop: '48px'
             }}>
-                <Hidden smDown>
+                { this.state.sidebar&&(< Hidden smDown > 
                 <div className={classes.sideBar}>
                     {sideList}
-                </div>
-                </Hidden>
-                <div style={{paddingLeft:((width==='lg'||width==='xl'||width==='md')?'250px':'0px')}}>
+                </div> 
+                </Hidden>)}
+
+                <div
+                    style={{
+                    paddingLeft: (((width === 'lg' || width === 'xl' || width === 'md'))&&this.state.sidebar
+                        ? '250px'
+                        : '0px')
+                }}>
                     <div className={classes.content}>
                         <div className={classes.article}>
                             <Hidden mdUp>
-                            <Button raised className={classes.button} onClick={this.handleLeftOpen}>展开列表</Button>
+                                <Button raised className={classes.button} onClick={this.handleLeftOpen}>展开列表</Button>
+                            </Hidden>
+                            <Hidden smDown>
+                                {/* <Button raised className={classes.button} onClick={this.handleSidebar}></Button> */}
+                                <div className={classes.sideButton} onClick={this.handleSidebar}>
+                                    {this.state.sidebar?<FormatIndentDecreaseIcon/>:<FormatIndentIncreaseIcon/>}
+                                </div>
                             </Hidden>
                             <Switch>
                                 <Route path="/article/:url" component={Article}/>
@@ -75,7 +96,7 @@ class ArticleList extends React.Component {
                         ©2017 Created by EHDFE
                     </div>
                 </div>
-            
+
                 <Hidden mdUp>
                     <Button
                         fab
