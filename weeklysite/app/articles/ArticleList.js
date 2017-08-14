@@ -42,7 +42,6 @@ class ArticleList extends React.Component {
     render() {
         let width = this.props.width;
         const classes = this.props.classes;
-        console.log(classes)
         const sideList = (
             <div>
                 <List className={classes.list} disablePadding>

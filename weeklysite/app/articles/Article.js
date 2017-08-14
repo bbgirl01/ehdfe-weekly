@@ -37,7 +37,11 @@ class Article extends React.Component {
 
     componentDidMount() {
         this.dealData(this.props.match.params.url);
-
+    }
+    componentDidUpdate(prevProps, prevState) {
+        this.article.querySelectorAll('a')&&this.article.querySelectorAll('a').forEach((el)=>{
+            el.setAttribute('target','_blank');
+        })
     }
     
     componentWillReceiveProps(nextProps){
@@ -50,7 +54,9 @@ class Article extends React.Component {
         return (
            <div className="article-content" >   
                {this.state.loading&&<CircularProgress className={classes.progress} size={50} />}     
-               <div dangerouslySetInnerHTML={{ __html:this.state.article }}></div>
+               <div ref={(article) => {
+                    this.article  = article;
+                   }}  dangerouslySetInnerHTML={{ __html:this.state.article }}></div>
            </div>
         );
     }
