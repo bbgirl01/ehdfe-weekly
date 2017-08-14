@@ -80,7 +80,6 @@ class ArticleList extends React.Component {
                                 <Button raised className={classes.button} onClick={this.handleLeftOpen}>展开列表</Button>
                             </Hidden>
                             <Hidden smDown>
-                                {/* <Button raised className={classes.button} onClick={this.handleSidebar}></Button> */}
                                 <div className={classes.sideButton} onClick={this.handleSidebar}>
                                     {this.state.sidebar?<FormatIndentDecreaseIcon/>:<FormatIndentIncreaseIcon/>}
                                 </div>
