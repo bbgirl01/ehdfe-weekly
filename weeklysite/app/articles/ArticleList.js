@@ -14,6 +14,7 @@ import FormatIndentDecreaseIcon from 'material-ui-icons/FormatIndentDecrease';
 import FormatIndentIncreaseIcon from 'material-ui-icons/FormatIndentIncrease';
 import compose from 'recompose/compose';
 import Grid from 'material-ui/Grid';
+import './ArticleList.css';
 
 class ArticleList extends React.Component {
     constructor(props) {
@@ -43,15 +44,13 @@ class ArticleList extends React.Component {
         let width = this.props.width;
         const classes = this.props.classes;
         const sideList = (
-            <div>
+            <div className="sidelist">
                 <List className={classes.list} disablePadding>
                     {navsData.map((nav, key) => <ListItem button key={key}>
                         <ListItemIcon>
                             {nav.icon()}
                         </ListItemIcon>
-
                         <Link to={nav.url}>{nav.name}</Link>
-
                     </ListItem>)
 }
                 </List>
