@@ -41,6 +41,15 @@
 .article-content ul li>p{
    margin-bottom: 16px;
 }
+
+.article-content img {
+    margin: 0 auto;
+    display: block;
+    width: 50%;
+    max-width: 500px;
+    min-width: 200px;
+}
+
 .article-content table{
     width:100%;
     border: 1px solid #DDDDDD;
